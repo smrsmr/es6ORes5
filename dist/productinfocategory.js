@@ -19,6 +19,10 @@ var vm = new Vue({
 	},
 
 	methods: {
+		// 跳转链接
+		pushHref: function pushHref(url, id) {
+			window.location.href = "" + url + "?id=" + id;
+		},
 		// 获取url id
 		getQueryString: function getQueryString(name) {
 			var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");

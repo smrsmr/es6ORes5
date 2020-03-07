@@ -28,7 +28,16 @@ Vue.component('common-head', {
 	template: `
 	<div id="smv_tem_2_15" ctype="banner" class="esmartMargin smartAbs " cpid="1133606" cstyle="Style1"
 	ccolor="Item0" areaid="Area0" iscontainer="True" pvid="" tareaid="Area0" re-direction="y" daxis="Y"
-	isdeletable="True" style="height: 79px; width: 100%; left: 0px; top: 0px;z-index:9;">
+	isdeletable="True" style="height: 85px;width: 100%; left: 0px; top: 0px;z-index:9;">
+	<div class="title" style="position: relative;left: -356px;width: 1920px;color: #b0b0b0;background: #333;">
+		<div style="font-size:16px;padding: 10px 0;margin:0 auto;width:1200px;">
+		欢迎您使用中国中药有限公司暖中宝产品网站
+		<span style="padding-left: 705px;vertical-align: middle;">
+			<img src="static/image/phone.png" style="width: 20px;height: 20px;vertical-align: bottom;" /> 
+			010-89259619
+		</span>
+	</div>
+	</div>
 	<div class="yibuFrameContent tem_2_15  banner_Style1  " style="overflow:visible;;">
 		<div class="fullcolumn-inner smAreaC" id="smc_Area0" cid="tem_2_15" style="width:1200px">
 			<div id="smv_tem_6_37" ctype="logoimage" class="esmartMargin smartAbs " cpid="1133606" cstyle="Style1"
@@ -97,7 +106,24 @@ Vue.component('common-head', {
 										</a>
 									</li>
 								</ul>
-
+							</li>
+							<li class="w-nav-inner" style="height:71px;line-height:71px;width:12.5%;">
+								<div class="w-nav-item">
+									<a href="video.html" target="_self" class="w-nav-item-link">
+										<span class="mw-iconfont"></span>
+										<span class="w-link-txt">视频管理</span>
+									</a>
+									<div class="sliding" style="width:12.5%;"></div>
+								</div>
+							</li>
+							<li class="w-nav-inner" style="height:71px;line-height:71px;width:12.5%;">
+								<div class="w-nav-item">
+									<a href="aptitude.html" target="_self" class="w-nav-item-link">
+										<span class="mw-iconfont"></span>
+										<span class="w-link-txt">资质管理</span>
+									</a>
+									<div class="sliding" style="width:12.5%;"></div>
+								</div>
 							</li>
 							<li class="w-nav-inner" style="height:71px;line-height:71px;width:12.5%;">
 								<div class="w-nav-item">
@@ -107,26 +133,6 @@ Vue.component('common-head', {
 									</a>
 									<div class="sliding" style="width:12.5%;"></div>
 								</div>
-							</li>
-							<li class="w-nav-inner" style="height:71px;line-height:71px;width:12.5%;">
-								<div class="w-nav-item">
-									<a href="javascript:;" target="_self" class="w-nav-item-link">
-										<span class="mw-iconfont"></span>
-										<span class="w-link-txt">客户服务</span>
-									</a>
-									<div class="sliding" style="width:12.5%;"></div>
-								</div>
-								<ul class="w-subnav" style="width:114px">
-									<li class="w-subnav-item userWidth">
-										<a href="http://zpusyiwl4h5djxzu.mikecrm.com/lW5DMCr" target="_blank" class="w-subnav-link"
-											style="height:35px;line-height:35px;">
-											<span class="mw-iconfont"></span>
-											<span class="w-link-txt">留言板</span>
-										</a>
-
-									</li>
-								</ul>
-
 							</li>
 							<li class="w-nav-inner" style="height:71px;line-height:71px;width:12.5%;">
 								<div class="w-nav-item">
@@ -143,10 +149,15 @@ Vue.component('common-head', {
 											<span class="mw-iconfont"></span>
 											<span class="w-link-txt">总公司</span>
 										</a>
-
+									</li>
+									<li class="w-subnav-item userWidth">
+										<a href="http://zpusyiwl4h5djxzu.mikecrm.com/lW5DMCr" target="_blank" class="w-subnav-link"
+											style="height:35px;line-height:35px;">
+											<span class="mw-iconfont"></span>
+											<span class="w-link-txt">留言板</span>
+										</a>
 									</li>
 								</ul>
-
 							</li>
 						</ul>
 					</div>

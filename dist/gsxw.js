@@ -17,11 +17,16 @@ var vm = new Vue({
 		this.findAdNewsListPage({
 			start: 1,
 			pageSize: this.pagination.pageSize,
-			typeCode: 0
+			typeCode: 0,
+			type: 1
 		});
 	},
 
 	methods: {
+		// 跳转链接
+		pushHref: function pushHref(url, id) {
+			window.location.href = "" + url + "?id=" + id;
+		},
 		// 获取新闻数据
 		findAdNewsListPage: function findAdNewsListPage() {
 			var _this = this;

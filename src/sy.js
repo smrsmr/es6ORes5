@@ -1,6 +1,8 @@
+"use strict";
+
 var vm = new Vue({
 	el: "#app",
-	data: function () {
+	data: function data() {
 		return {
 			// 商品列表
 			dataList: [],
@@ -12,8 +14,8 @@ var vm = new Vue({
 			goodsList: []
 		};
 	},
-	mounted: function () {
-		let params = {
+	mounted: function mounted() {
+		var params = {
 			start: 1,
 			pageSize: 10
 		};
@@ -21,9 +23,11 @@ var vm = new Vue({
 		this.findAdNewsListPage({
 			start: 1,
 			pageSize: 4,
+			type: 1,
 			typeCode: 0
 		});
 		this.findAdNewsAllList({
+			type: 1,
 			typeCode: 4
 		});
 		$(function () {
@@ -32,66 +36,68 @@ var vm = new Vue({
 				control.find("img").cutFill();
 				con_41_34_init();
 			}, 1000);
-		})
-		this.goodsCategoryList()
+		});
+		this.goodsCategoryList();
 	},
 	methods: {
+		// 跳转链接
+		pushHref: function (url, id) {
+			window.location.href = '' + url + '?id=' + id;
+		},
 		// 获取商品分类
-		goodsCategoryList() {
-			let params = {
+		goodsCategoryList: function goodsCategoryList() {
+			var _this = this;
+
+			var params = {
 				start: 1,
 				pageSize: 3
-			}
-			$api.shop
-				.goodsCategoryList(params)
-				.then(res => {
-					this.goodsList = res.data.list;
-				})
-				.catch(err => {
-					console.log(err);
-				});
+			};
+			$api.shop.goodsCategoryList(params).then(function (res) {
+				_this.goodsList = res.data.list;
+			}).catch(function (err) {
+				console.log(err);
+			});
 		},
+
 		// 获取商品数据
-		findList(params) {
-			$api.shop
-				.findList(params)
-				.then(res => {
-					this.dataList = res.data.list;
-					// console.log(this.dataList);
-				})
-				.catch(err => {
-					console.log(err);
-				});
+		findList: function findList(params) {
+			var _this2 = this;
+
+			$api.shop.findList(params).then(function (res) {
+				_this2.dataList = res.data.list;
+				// console.log(this.dataList);
+			}).catch(function (err) {
+				console.log(err);
+			});
 		},
+
 		// 获取新闻数据
-		findAdNewsListPage(params) {
-			$api.shop
-				.findAdNewsListPage(params)
-				.then(res => {
-					this.adList = res.data.list;
-				})
-				.catch(err => {
-					console.log(err);
-				});
+		findAdNewsListPage: function findAdNewsListPage(params) {
+			var _this3 = this;
+
+			$api.shop.findAdNewsListPage(params).then(function (res) {
+				_this3.adList = res.data.list;
+			}).catch(function (err) {
+				console.log(err);
+			});
 		},
+
 		// 获取新闻列表
-		findAdNewsAllList(params) {
-			$api.shop
-				.findAdNewsAllList(params)
-				.then(res => {
-					this.aboutInfo = res.data[0];
-					console.log(this.aboutInfo);
-				})
-				.catch(err => {
-					console.log(err);
-				});
+		findAdNewsAllList: function findAdNewsAllList(params) {
+			var _this4 = this;
+			$api.shop.findAdNewsAllList(params).then(function (res) {
+				_this4.aboutInfo = res.data[0];
+			}).catch(function (err) {
+				console.log(err);
+			});
 		},
+
 		// 转换对象
-		parse(str) {
+		parse: function parse(str) {
 			if (JSON.parse(str)) {
 				return JSON.parse(str);
 			} else {
-				return []
+				return [];
 			}
 		}
 	}

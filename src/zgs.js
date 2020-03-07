@@ -1,11 +1,13 @@
+"use strict";
+
 var vm = new Vue({
 	el: "#app",
-	data() {
+	data: function data() {
 		return {
 			name: "我是vue组件页面"
-		}
+		};
 	},
-	mounted() {
-		console.log(this.name)
-	},
-})
+	mounted: function mounted() {
+		console.log(this.name);
+	}
+});

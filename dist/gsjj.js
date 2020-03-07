@@ -9,6 +9,7 @@ var vm = new Vue({
 	},
 	mounted: function mounted() {
 		this.findAdNewsAllList({
+			type: 1,
 			typeCode: 4
 		});
 	},

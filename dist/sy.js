@@ -23,9 +23,11 @@ var vm = new Vue({
 		this.findAdNewsListPage({
 			start: 1,
 			pageSize: 4,
+			type: 1,
 			typeCode: 0
 		});
 		this.findAdNewsAllList({
+			type: 1,
 			typeCode: 4
 		});
 		$(function () {
@@ -38,6 +40,10 @@ var vm = new Vue({
 		this.goodsCategoryList();
 	},
 	methods: {
+		// 跳转链接
+		pushHref: function pushHref(url, id) {
+			window.location.href = '' + url + '?id=' + id;
+		},
 		// 获取商品分类
 		goodsCategoryList: function goodsCategoryList() {
 			var _this = this;
@@ -79,10 +85,8 @@ var vm = new Vue({
 		// 获取新闻列表
 		findAdNewsAllList: function findAdNewsAllList(params) {
 			var _this4 = this;
-
 			$api.shop.findAdNewsAllList(params).then(function (res) {
 				_this4.aboutInfo = res.data[0];
-				console.log(_this4.aboutInfo);
 			}).catch(function (err) {
 				console.log(err);
 			});

@@ -25,7 +25,7 @@ Vue.component('common-swiper', {
 	template: `
 	<div id="smv_tem_3_51" ctype="slideset" class="esmartMargin smartAbs " cpid="1133606" cstyle="Style1"
 			ccolor="Item0" areaid="Area0" iscontainer="True" pvid="" tareaid="Area0" re-direction="y" daxis="Y"
-			isdeletable="True" style="height: 679px; width: 100%; left: 0px; top: 78px;z-index:0;">
+			isdeletable="True" style="height: 679px; width: 100%; left: 0px; top: 123px;z-index:0;">
 			<div class="yibuFrameContent tem_3_51  slideset_Style1  " style="overflow:visible;;">
 				<!--w-slide-->
 				<div class="w-slide" id="slider_smv_tem_3_51">
@@ -37,7 +37,7 @@ Vue.component('common-swiper', {
 								<div class="yibuFrameContent tem_27_59">
 									<div class="w-image-box">
 										<a target="_self" href="">
-											<img :src="item.imgPath" alt="" title="">
+											<img src="" alt="" title="">
 										</a>
 									</div>
 								</div>
@@ -45,7 +45,7 @@ Vue.component('common-swiper', {
 						</div>
 						<div class="content-box-inner"
 						:style ="{backgroundImage:'url('+item.imgPath+')'}"
-							style="background-position:50% 50%;background-repeat:no-repeat;background-size:auto;background-color:;opacity:1">
+							style="background-position:50% 50%;background-repeat:no-repeat;background-size: cover;background-color:;opacity:1">
 						</div>
 					</div>
 
@@ -77,7 +77,7 @@ tem_3_51_sliderset3_init = function () {
 		$AutoPlay: "False" == "True" ? false : "on" == "on", //自动播放
 		$PlayOrientation: 1, //2为向上滑，1为向左滑
 		$Loop: 1, //循环
-		$Idle: parseInt("3000"), //切换间隔
+		$Idle: parseInt("3000000"), //切换间隔
 		$SlideDuration: "1000", //延时
 		$SlideEasing: $Jease$.$OutQuint,
 

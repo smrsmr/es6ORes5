@@ -1,27 +1,32 @@
+'use strict';
+
 var vm = new Vue({
 	el: '#app',
-	data() {
+	data: function data() {
 		return {
 			aboutInfo: {}
-		}
+		};
 	},
-	mounted() {
+	mounted: function mounted() {
 		this.findAdNewsAllList({
+			type: 1,
 			typeCode: 4
 		});
 	},
+
 	methods: {
 		// 获取新闻列表
-		findAdNewsAllList(params = {}) {
-			$api.shop
-				.findAdNewsAllList(params)
-				.then(res => {
-					this.aboutInfo = res.data[0];
-					console.log(this.aboutInfo);
-				})
-				.catch(err => {
-					console.log(err);
-				});
-		},
-	},
-})
+		findAdNewsAllList: function findAdNewsAllList() {
+			var _this = this;
+
+			var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+			$api.shop.findAdNewsAllList(params).then(function (res) {
+				_this.aboutInfo = res.data[0];
+				console.log(_this.aboutInfo);
+			}).catch(function (err) {
+				console.log(err);
+			});
+		}
+	}
+});
