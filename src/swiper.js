@@ -1,78 +1,34 @@
+"use strict";
 Vue.component('common-swiper', {
-	data() {
+	data: function data() {
 		return {
 			imgData: []
-		}
+		};
 	},
-	mounted() {
+	mounted: function mounted() {
+		var _this = this;
+
 		// 获取轮播图列表
-		$api.shop
-			.findAdNewsAllList({
-				type: 0
-			})
-			.then(res => {
-				this.imgData = res.data;
-				this.$nextTick(() => {
-					setTimeout(() => {
-						tem_3_51_sliderset3_init();
-					}, 200);
-				})
-			})
-			.catch(err => {
-				console.log(err);
+		$api.shop.findAdNewsAllList({
+			type: 0
+		}).then(function (res) {
+			_this.imgData = res.data;
+			_this.$nextTick(function () {
+				setTimeout(function () {
+					tem_3_51_sliderset3_init();
+				}, 200);
 			});
+		}).catch(function (err) {
+			console.log(err);
+		});
 	},
-	template: `
-	<div id="smv_tem_3_51" ctype="slideset" class="esmartMargin smartAbs " cpid="1133606" cstyle="Style1"
-			ccolor="Item0" areaid="Area0" iscontainer="True" pvid="" tareaid="Area0" re-direction="y" daxis="Y"
-			isdeletable="True" style="height: 679px; width: 100%; left: 0px; top: 123px;z-index:0;">
-			<div class="yibuFrameContent tem_3_51  slideset_Style1  " style="overflow:visible;;">
-				<!--w-slide-->
-				<div class="w-slide" id="slider_smv_tem_3_51">
-					<div class="w-slide-inner" data-u="slides">
 
-					<div class="content-box" v-for="item in imgData" :key="item.id">
-						<div class="smAreaC slideset_AreaC">
-							<div ctype="image" class="esmartMargin smartAbs ">
-								<div class="yibuFrameContent tem_27_59">
-									<div class="w-image-box">
-										<a target="_self" href="">
-											<img src="" alt="" title="">
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="content-box-inner"
-						:style ="{backgroundImage:'url('+item.imgPath+')'}"
-							style="background-position:50% 50%;background-repeat:no-repeat;background-size: cover;background-color:;opacity:1">
-						</div>
-					</div>
-
-					</div>
-					<!-- Bullet Navigator -->
-					<div data-u="navigator" class="w-slide-btn-box " data-autocenter="1">
-						<!-- bullet navigator item prototype -->
-						<div class="w-slide-btn" data-u="prototype"></div>
-					</div>
-
-					<!-- 1Arrow Navigator -->
-					<span data-u="arrowleft" class="w-slide-arrowl  slideArrow  " data-autocenter="2" id="left_tem_3_51">
-						<i class="w-itemicon mw-iconfont">&#xb133;</i>
-					</span>
-					<span data-u="arrowright" class="w-slide-arrowr slideArrow " data-autocenter="2" id="right_tem_3_51">
-						<i class="w-itemicon mw-iconfont">&#xb132;</i>
-					</span>
-				</div>
-			</div>
-		</div>
-	`
+	template: "\n\t<div id=\"smv_tem_3_51\" ctype=\"slideset\" class=\"esmartMargin smartAbs \" cpid=\"1133606\" cstyle=\"Style1\"\n\t\t\tccolor=\"Item0\" areaid=\"Area0\" iscontainer=\"True\" pvid=\"\" tareaid=\"Area0\" re-direction=\"y\" daxis=\"Y\"\n\t\t\tisdeletable=\"True\" style=\"height: 679px; width: 100%; left: 0px; top: 123px;z-index:0;\">\n\t\t\t<div class=\"yibuFrameContent tem_3_51  slideset_Style1  \" style=\"overflow:visible;;\">\n\t\t\t\t<!--w-slide-->\n\t\t\t\t<div class=\"w-slide\" id=\"slider_smv_tem_3_51\">\n\t\t\t\t\t<div class=\"w-slide-inner\" data-u=\"slides\">\n\n\t\t\t\t\t<div class=\"content-box\" v-for=\"item in imgData\" :key=\"item.id\">\n\t\t\t\t\t\t<div class=\"smAreaC slideset_AreaC\">\n\t\t\t\t\t\t\t<div ctype=\"image\" class=\"esmartMargin smartAbs \">\n\t\t\t\t\t\t\t\t<div class=\"yibuFrameContent tem_27_59\">\n\t\t\t\t\t\t\t\t\t<div class=\"w-image-box\">\n\t\t\t\t\t\t\t\t\t\t<a target=\"_self\" href=\"\">\n\t\t\t\t\t\t\t\t\t\t\t<img src=\"\" alt=\"\" title=\"\">\n\t\t\t\t\t\t\t\t\t\t</a>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class=\"content-box-inner\"\n\t\t\t\t\t\t:style =\"{backgroundImage:'url('+item.imgPath+')'}\"\n\t\t\t\t\t\t\tstyle=\"background-position:50% 50%;background-repeat:no-repeat;background-size: cover;background-color:;opacity:1\">\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\n\t\t\t\t\t</div>\n\t\t\t\t\t<!-- Bullet Navigator -->\n\t\t\t\t\t<div data-u=\"navigator\" class=\"w-slide-btn-box \" data-autocenter=\"1\">\n\t\t\t\t\t\t<!-- bullet navigator item prototype -->\n\t\t\t\t\t\t<div class=\"w-slide-btn\" data-u=\"prototype\"></div>\n\t\t\t\t\t</div>\n\n\t\t\t\t\t<!-- 1Arrow Navigator -->\n\t\t\t\t\t<span data-u=\"arrowleft\" class=\"w-slide-arrowl  slideArrow  \" data-autocenter=\"2\" id=\"left_tem_3_51\">\n\t\t\t\t\t\t<i class=\"w-itemicon mw-iconfont\">&#xb133;</i>\n\t\t\t\t\t</span>\n\t\t\t\t\t<span data-u=\"arrowright\" class=\"w-slide-arrowr slideArrow \" data-autocenter=\"2\" id=\"right_tem_3_51\">\n\t\t\t\t\t\t<i class=\"w-itemicon mw-iconfont\">&#xb132;</i>\n\t\t\t\t\t</span>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t"
 });
 
-
 // 轮播图
-tem_3_51_page = 1;
-tem_3_51_sliderset3_init = function () {
+var tem_3_51_page = 1;
+var tem_3_51_sliderset3_init = function tem_3_51_sliderset3_init() {
 	var jssor_1_options_tem_3_51 = {
 		$AutoPlay: "False" == "True" ? false : "on" == "on", //自动播放
 		$PlayOrientation: 1, //2为向上滑，1为向左滑
@@ -83,7 +39,7 @@ tem_3_51_sliderset3_init = function () {
 
 		$CaptionSliderOptions: {
 			$Class: $JssorCaptionSlideo$,
-			$Transitions: GetSlideAnimation("1", "1000"),
+			$Transitions: GetSlideAnimation("1", "1000")
 		},
 
 		$ArrowNavigatorOptions: {
@@ -156,7 +112,6 @@ tem_3_51_sliderset3_init = function () {
 	});
 };
 
-
 $(function () {
 	//获取幻灯显示动画类型
 	var $this = $('#slider_smv_tem_3_51');
@@ -198,7 +153,6 @@ $(function () {
 		"width": $this.width()
 	});
 
-
 	var areaId = $("#smv_tem_3_51").attr("tareaid");
 	if (areaId == "") {
 		var mainWidth = $("#smv_Main").width();
@@ -221,5 +175,4 @@ $(function () {
 	var arrowTop = (18 - arrowHeight) / 2;
 	$('#slider_smv_tem_3_51 .w-slide-arrowl').eq(-1).css('top', arrowTop);
 	$('#slider_smv_tem_3_51 .w-slide-arrowr').eq(-1).css('top', arrowTop);
-
 });
