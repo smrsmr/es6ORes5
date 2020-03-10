@@ -5,12 +5,50 @@ var vm = new Vue({
 	data: function data() {
 		return {
 			name: "",
-			phone: ""
+			phone: "",
+			service: [{}],
+			product: [{}],
+			brand: [{}],
+			itemObj: {}
 		};
 	},
-	mounted: function mounted() {},
+	mounted: function mounted() {
+		this.getAdvantage({
+			type: 'warm-product',
+			enable: 0
+		})
+		this.getText({
+			type: 1,
+			typeCode: "2"
+		})
+	},
 
 	methods: {
+		// 获取加盟文本信息
+		getText(params) {
+			$api.shop.findAdNewsAllList(params).then((res) => {
+				if (res.retcode === 1) {
+					let data = res.data;
+					this.itemObj = data[0]
+				}
+			}).catch((err) => {
+				console.log(err)
+			});
+		},
+		// 获取加盟优势
+		getAdvantage(params) {
+			$api.shop.systemFindList(params).then((res) => {
+				if (res.retcode === 1) {
+					let data = res.data.list;
+					this.service = data.filter(v => v.val === 'service');
+					this.product = data.filter(v => v.val === 'product');
+					this.brand = data.filter(v => v.val === 'brand');
+					console.log(this.service, this.product, this.brand);
+				}
+			}).catch((err) => {
+				console.log(err)
+			});
+		},
 		// 提交申请
 		pushInfo: function pushInfo() {
 			var _this = this;

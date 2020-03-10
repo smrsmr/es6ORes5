@@ -18,13 +18,25 @@ var vm = new Vue({
 			start: 1,
 			pageSize: this.pagination.pageSize,
 			typeCode: 0,
-			type: 1
+			type: 1,
+			enable: 0
 		});
 	},
 
 	methods: {
+		// 转换时间戳
+		timestampToTime: function timestampToTime(timestamp) {
+			var date = new Date(timestamp); //时间戳为10位需*1000，时间戳为13位的话不需乘1000
+			var Y = date.getFullYear() + '-';
+			var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+			var D = date.getDate() + ' ' < 10 ? '0' + date.getDate() : date.getDate();
+			var h = date.getHours() + ':';
+			var m = date.getMinutes() + ':';
+			var s = date.getSeconds();
+			return Y + M + D;
+		},
 		// 跳转链接
-		pushHref: function (url, id) {
+		pushHref: function pushHref(url, id) {
 			window.location.href = "" + url + "?id=" + id;
 		},
 		// 获取新闻数据

@@ -33,14 +33,14 @@ var vm = new Vue({
 
   methods: {
     // 跳转链接
-    pushHref: function(url, id) {
+    pushHref: function pushHref(url, id) {
       window.location.href = "" + url + "?id=" + id;
     },
     // 提交信息
     submitForm: function submitForm(form) {
       var _this = this;
 
-      this.$refs[form].validate(function(valid) {
+      this.$refs[form].validate(function (valid) {
         if (valid) {
           var params = {
             outletId: "567537280696",
@@ -52,12 +52,10 @@ var vm = new Vue({
             buyerEmail: _this.form.email,
             buyerMsg: _this.form.textarea,
             goodsId: _this.goodsObj.id,
-            detailList: [
-              {
-                goodsId: _this.goodsObj.id,
-                quan: 1
-              }
-            ]
+            detailList: [{
+              goodsId: _this.goodsObj.id,
+              quan: 1
+            }]
           };
           _this.insertOrder(params);
         } else {
@@ -71,48 +69,42 @@ var vm = new Vue({
     insertOrder: function insertOrder(params) {
       var _this2 = this;
 
-      $api.shop
-        .insertOrder(params)
-        .then(function(res) {
-          if (res.retcode === 1) {
-            _this2.$notify({
-              title: "",
-              message: res.retmsg,
-              type: "success"
-            });
-            _this2.dialogVisible = false;
-          } else {
-            _this2.$notify({
-              title: "",
-              message: res.retmsg,
-              type: "error"
-            });
-          }
-        })
-        .catch(function(err) {
-          console.log(err);
-        });
+      $api.shop.insertOrder(params).then(function (res) {
+        if (res.retcode === 1) {
+          _this2.$notify({
+            title: "",
+            message: res.retmsg,
+            type: "success"
+          });
+          _this2.dialogVisible = false;
+        } else {
+          _this2.$notify({
+            title: "",
+            message: res.retmsg,
+            type: "error"
+          });
+        }
+      }).catch(function (err) {
+        console.log(err);
+      });
     },
 
     // 获取商品详情
     findGoodsById: function findGoodsById(params) {
       var _this3 = this;
 
-      $api.shop
-        .findGoodsById(params)
-        .then(function(res) {
-          _this3.goodsObj = res.data;
-          _this3.goodsImgList = _this3.parse(res.data.detailImgs);
-          document.getElementsByTagName("title")[0].innerText = _this3.goodsObj.title;
-          _this3.$nextTick(function() {
-            setTimeout(function() {
-              tem_2_58_slider4_init();
-            }, 300);
-          });
-        })
-        .catch(function(err) {
-          console.log(err);
+      $api.shop.findGoodsById(params).then(function (res) {
+        _this3.goodsObj = res.data;
+        _this3.goodsImgList = _this3.parse(res.data.detailImgs);
+        document.getElementsByTagName("title")[0].innerText = _this3.goodsObj.title;
+        _this3.$nextTick(function () {
+          setTimeout(function () {
+            tem_2_58_slider4_init();
+          }, 300);
         });
+      }).catch(function (err) {
+        console.log(err);
+      });
     },
 
     // 获取url id

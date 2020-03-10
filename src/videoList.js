@@ -5,26 +5,42 @@ var vm = new Vue({
 	data: function data() {
 		return {
 			videoList: [],
-			videoType: []
+			videoTitle: [],
+			vIndex: null,
+			// 分页对象
+			pagination: {
+				total: 1,
+				pageSize: 3
+			}
 		};
 	},
 	created: function mounted() {
 		this.findAdNewsListPage({
 			start: 1,
-			pageSize: 20,
-			type: 3
+			pageSize: this.pagination.pageSize,
+			type: 3,
+			enable: 0
 		});
 	},
 	mounted: function mounted() {},
 	methods: {
+		currentChange: function currentChange(val) {
+			this.findAdNewsListPage({
+				start: val,
+				pageSize: this.pagination.pageSize,
+				type: 3,
+				enable: 0
+			});
+		},
 		filterV: function filterV(item) {
+			this.vIndex = item.id;
 			this.findAdNewsListPage({
 				start: 1,
-				pageSize: 20,
+				pageSize: this.pagination.pageSize,
 				type: 3,
-				typeCode: item.typeCode
+				typeName: item.typeName,
+				enable: 0
 			});
-			// console.log(item);
 		},
 		// 跳转链接
 		pushHref: function pushHref(url, id) {
@@ -36,22 +52,16 @@ var vm = new Vue({
 			$api.shop.findAdNewsListPage(params).then(function (res) {
 				var data = res.data.list;
 				_this2.videoList = data;
-				if (_this2.videoType.length <= 0) {
+				_this2.pagination.total = res.data.total;
+				if (_this2.videoTitle.length <= 0) {
 					data.map(function (v) {
-						if (_this2.videoType.filter(function (t) {
-							return t.typeCode === v.typeCode;
-						}).length === 0) {
-							_this2.videoType.push(v);
+						if (_this2.videoTitle.filter(function (t) {
+								return t.typeName === v.typeName;
+							}).length === 0) {
+							_this2.videoTitle.push(v);
 						}
 					});
 				}
-				$(function () {
-					setTimeout(function () {
-						var control = $("#smv_con_41_34");
-						control.find("img").cutFill();
-						con_41_34_init();
-					}, 300);
-				});
 			}).catch(function (err) {
 				console.log(err);
 			});

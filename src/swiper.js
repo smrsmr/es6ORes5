@@ -10,7 +10,9 @@ Vue.component('common-swiper', {
 
 		// 获取轮播图列表
 		$api.shop.findAdNewsAllList({
-			type: 0
+			type: 0,
+			enable: 0,
+			typeCode: 'warm-index-top'
 		}).then(function (res) {
 			_this.imgData = res.data;
 			_this.$nextTick(function () {
@@ -33,7 +35,7 @@ var tem_3_51_sliderset3_init = function tem_3_51_sliderset3_init() {
 		$AutoPlay: "False" == "True" ? false : "on" == "on", //自动播放
 		$PlayOrientation: 1, //2为向上滑，1为向左滑
 		$Loop: 1, //循环
-		$Idle: parseInt("3000000"), //切换间隔
+		$Idle: parseInt("3000"), //切换间隔
 		$SlideDuration: "1000", //延时
 		$SlideEasing: $Jease$.$OutQuint,
 

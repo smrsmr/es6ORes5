@@ -20,7 +20,7 @@ var vm = new Vue({
 
 	methods: {
 		// 跳转链接
-		pushHref: function (url, id) {
+		pushHref: function pushHref(url, id) {
 			window.location.href = "" + url + "?id=" + id;
 		},
 		// 获取url id
@@ -46,7 +46,9 @@ var vm = new Vue({
 			var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
 			$api.shop.findGoodsByCategoryId(params).then(function (res) {
-				_this.CategoryList = res.data;
+				_this.CategoryList = res.data.filter(function (v) {
+					return v.enable === 0;
+				});
 				console.log(_this.CategoryList);
 			}).catch(function (err) {
 				console.log(err);
